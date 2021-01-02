@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository("candidaterepo")
 public class CandidateRepository implements CandidateDao {
@@ -28,7 +29,10 @@ public class CandidateRepository implements CandidateDao {
     public List<Candidate> getCandidates() {
         final String sql="SELECT * from candidate";
         List<Candidate> candidates=jdbcTemplate.query(sql,(resultSet,i)->{
-            return new Candidate();
+            return new Candidate(resultSet.getString("name"),resultSet.getString("photo"),
+                    resultSet.getString("party_id"),resultSet.getString("constituency"),
+                    resultSet.getString("candidate_type"),resultSet.getString("election_id"),
+                    UUID.fromString(resultSet.getString("id")));
         });
         return candidates;
     }
