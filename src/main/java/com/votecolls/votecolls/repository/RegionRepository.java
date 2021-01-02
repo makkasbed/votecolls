@@ -1,6 +1,7 @@
 package com.votecolls.votecolls.repository;
 
 import com.votecolls.votecolls.dao.RegionDao;
+import com.votecolls.votecolls.model.Constituency;
 import com.votecolls.votecolls.model.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,21 +20,33 @@ public class RegionRepository implements RegionDao {
 
     @Override
     public int addRegion(Region r) {
-        return 0;
+        return jdbcTemplate.update("insert into region(name,constituencies)values(?,?)",new Object[]{
+                r.getName(),
+                r.getConstituencies()
+        });
     }
 
     @Override
     public List<Region> getRegions() {
-        return null;
+        final String sql="SELECT * from region";
+        List<Region> regions=jdbcTemplate.query(sql,(resultSet, i)->{
+            return new Region(UUID.fromString(resultSet.getString("id")),
+                    resultSet.getString("name"),resultSet.getInt("constituencies"));
+        });
+        return regions;
     }
 
     @Override
     public int updateRegion(UUID id, Region r) {
-        return 0;
+        return jdbcTemplate.update("update region set name=?,constituencies=? where id=?",new Object[]{
+                r.getName(),
+                r.getConstituencies(),
+                r.getId()
+        });
     }
 
     @Override
     public int deleteRegion(UUID id) {
-        return 0;
+        return jdbcTemplate.update("delete from region where id=?",new Object[]{id});
     }
 }

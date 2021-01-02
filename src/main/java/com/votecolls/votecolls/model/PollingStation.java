@@ -13,10 +13,19 @@ public class PollingStation {
     int totalVotes;
 
 
-    public PollingStation(String code, String name, String constituency) {
+    public PollingStation(String code, String name, String constituency,int totalVotes) {
         this.code = code;
         this.name = name;
         this.constituency = constituency;
+        this.totalVotes=totalVotes;
+    }
+
+    public int getTotalVotes() {
+        return totalVotes;
+    }
+
+    public void setTotalVotes(int totalVotes) {
+        this.totalVotes = totalVotes;
     }
 
     public String getCode() {
