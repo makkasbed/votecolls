@@ -1,14 +1,23 @@
 package com.votecolls.votecolls.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Results {
+    @JsonProperty("polling_station")
     String polling_station;
+    @JsonProperty("pink_sheet")
     String pinkSheet;
+    @JsonProperty("user_id")
     String userId;
+    @JsonProperty("total_voted")
     int totalVoted;
+    @JsonProperty("total_valid")
     int totalValid;
+    @JsonProperty("total_invalid")
     int totalInvalid;
+    @JsonProperty("election_id")
     String election;
 
     List<CandidateResult> candidateResultList;

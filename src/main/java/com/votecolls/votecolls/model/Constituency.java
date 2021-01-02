@@ -1,13 +1,21 @@
 package com.votecolls.votecolls.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class Constituency {
+    @JsonProperty("id")
     UUID id;
+    @JsonProperty("code")
     String code;
+    @JsonProperty("name")
     String name;
+    @JsonProperty("region_id")
     String region_id;
+    @JsonProperty("total_voters")
     int totalVoters;
+    @JsonProperty("polling_station_count")
     int stationCount;
 
     public Constituency(UUID id,String code, String name, String region_id, int totalVoters,int stationCount) {

@@ -1,11 +1,17 @@
 package com.votecolls.votecolls.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class Election {
+   @JsonProperty("id")
    UUID id;
+   @JsonProperty("name")
    String electionname;
+   @JsonProperty("year")
    String year;
+   @JsonProperty("election_type")
    String electiontype;
 
     public Election(UUID id, String electionname, String year, String electiontype) {

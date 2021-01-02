@@ -1,12 +1,19 @@
 package com.votecolls.votecolls.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class Party {
+    @JsonProperty("id")
     UUID id;
+    @JsonProperty("name")
     String name;
+    @JsonProperty("initials")
     String initials;
+    @JsonProperty("logo")
     String logo;
+    @JsonProperty("mainColor")
     String mainColor;
 
     public Party(UUID id, String name, String initials, String logo, String mainColor) {

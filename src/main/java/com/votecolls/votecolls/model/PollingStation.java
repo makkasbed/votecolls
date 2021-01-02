@@ -1,9 +1,15 @@
 package com.votecolls.votecolls.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PollingStation {
+    @JsonProperty("code")
     String code;
+    @JsonProperty("name")
     String name;
+    @JsonProperty("constituency")
     String constituency;
+    @JsonProperty("total_votes")
     int totalVotes;
 
 
