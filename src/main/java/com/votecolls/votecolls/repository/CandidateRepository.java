@@ -91,7 +91,7 @@ public class CandidateRepository implements CandidateDao {
     }
 
     @java.lang.Override
-    public int updateCandidate(int id, Candidate candidate) {
+    public int updateCandidate(UUID id, Candidate candidate) {
         return jdbcTemplate.update("UPDATE candidate set name=?,photo=?,party_id=?,constituency=?," +
                 "candidate_type=?,election_id=? where id=?",new Object[]{
                         candidate.getName(),
